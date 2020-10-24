@@ -56,8 +56,13 @@
       <Project>{61be6f3a-0be2-4364-bfb8-f4ce215c4176}</Project>
       <Name>Agenda.DAL</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Agenda.Domain\Agenda.Domain.csproj">
+      <Project>{d18ba8c9-23b4-47ec-beb6-f812bce2ead3}</Project>
+      <Name>Agenda.Domain</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

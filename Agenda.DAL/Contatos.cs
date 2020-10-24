@@ -1,5 +1,8 @@
-﻿using System;
+﻿using Agenda.Domain;
+using Dapper;
+using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -10,32 +13,73 @@ namespace Agenda.DAL
     public class Contatos
     {
         string _strCon;
-        SqlConnection _con;
+        //SqlConnection _con;
 
         public Contatos()
         {
-            _strCon = @"Data Source=localhost;User ID=sa;Password=ACESSO;Initial Catalog=Agenda";
-            _con = new SqlConnection(_strCon);
+            _strCon = ConfigurationManager.ConnectionStrings["con"].ConnectionString ;
+            //_con = new SqlConnection(_strCon);
         }
 
-        public void Adicionar(string id, string nome)
-        {
-            _con.Open();
+        public void Adicionar(Contato contato)
+        { 
+            using(var con = new SqlConnection(_strCon))
+            {
+                con.Execute("insert into Contato (Id, Nome) values (@Id, @Nome)", contato);
+                //con.Open();
 
-            string query = $"insert into Contato (Id, Nome) values ('{id}', '{nome}')";
-            SqlCommand cmd = new SqlCommand(query, _con);
-            cmd.ExecuteNonQuery();
-
-            _con.Close();
+                //string query = $"insert into Contato (Id, Nome) values ('{contato.Id}', '{contato.Nome}')";
+                //SqlCommand cmd = new SqlCommand(query, con);
+                //cmd.ExecuteNonQuery();
+            }            
         }
 
-        public string Obter(string id)
+        public Contato Obter(Guid id)
         {
-            _con.Open();
-            var query = $"select Nome from Contato where Id = '{id}'";
-            var cmd = new SqlCommand(query, _con);
-            var r = cmd.ExecuteScalar();
-            return r.ToString();
+            Contato contato;
+            using (var con = new SqlConnection(_strCon))
+            {
+                contato = con.QueryFirst<Contato>("select * from Contato where Id = @Id", new { Id = id.ToString() });
+                //con.Open();
+                //var query = $"select * from Contato where Id = '{id}'";
+                //var cmd = new SqlCommand(query, con);
+
+                //var sqlDataReader = cmd.ExecuteReader();
+                //sqlDataReader.Read();
+
+                //contato = new Contato()
+                //{
+                //    Id = Guid.Parse(sqlDataReader["Id"].ToString()),
+                //    Nome = sqlDataReader["Nome"].ToString()
+                //};
+            }
+
+            return contato;
+        }
+
+        public List<Contato> ObterTodos()
+        {
+            var contatos = new List<Contato>();
+            using (var con = new SqlConnection(_strCon))
+            {
+                var query = $"select * from Contato";
+                contatos = con.Query<Contato>(query).ToList();
+                //con.Open();
+                //var cmd = new SqlCommand(query, con);
+
+                //var sqlDataReader = cmd.ExecuteReader();
+
+                //while (sqlDataReader.Read())
+                //{
+                //    contatos.Add(new Contato()
+                //    {
+                //        Id = Guid.Parse(sqlDataReader["Id"].ToString()),
+                //        Nome = sqlDataReader["Nome"].ToString()
+                //    });
+                //}
+            }
+
+            return contatos;
         }
     }
 }
