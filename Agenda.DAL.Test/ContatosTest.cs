@@ -52,25 +52,6 @@ namespace Agenda.DAL.Test
             Assert.AreEqual(contato.Nome, contatoResultado.Nome);
         }
 
-        [Test]
-        public void ObterTodosOsContatosTest()
-        {
-            // Monta
-            Contato contato1 = _fixture.Create<Contato>();
-            Contato contato2 = _fixture.Create<Contato>();
-
-            // Executa
-            _contatos.Adicionar(contato1);
-            _contatos.Adicionar(contato2);
-            var listContatos = _contatos.ObterTodos();
-            var umContato = listContatos.Where(c => c.Id == contato1.Id).FirstOrDefault();
-
-            // Verifica
-            Assert.IsTrue(listContatos.Count() > 1);
-            Assert.AreEqual(umContato.Id, contato1.Id);
-            Assert.AreEqual(umContato.Nome, contato1.Nome);
-        }
-
         [TearDown]
         public void TearDown()
         {
