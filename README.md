@@ -1,5 +1,15 @@
 # TDD-Agenda
-<p>Projeto criado junto com o curso "TDD em C# com xUnit, NUnit e Moq. Testes e Frameworks .NET."</p>
+<p align="center">Projeto criado junto com o curso "TDD em C# com xUnit, NUnit e Moq. Testes e Frameworks .NET."</p>
+<p align="center">	
+  <img alt="Repository size" src="https://img.shields.io/github/repo-size/sandersoncorrea/TDD-Agenda">
+	
+  <a href="https://www.linkedin.com/in/david-azeredo/">
+    <img alt="Made by David Azeredo" src="https://img.shields.io/badge/made%20by-sandersoncorrea-%2304D361">
+  </a>
+  <a href="https://opensource.org/licenses/MIT">
+    <img src="https://img.shields.io/badge/License-MIT-blue.svg" alt="License MIT">
+  </a>
+</p>
 
 <p><b>Plataforma: </b>Udemy</p>
 <p><b>Curso: </b>TDD em C# com xUnit, NUnit e Moq. Testes e Frameworks .NET</p>
