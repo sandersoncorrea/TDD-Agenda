@@ -15,7 +15,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Agenda.Repos", "Agenda.Repo
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Testes", "Testes", "{B489E05B-06F7-4713-A3C2-CC8DB700301B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Agenda.Respos.Test", "Agenda.Respos.Test\Agenda.Respos.Test.csproj", "{231ACCE4-A69A-4F31-825B-69A85525B75A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Agenda.Repos.Test", "Agenda.Respos.Test\Agenda.Repos.Test.csproj", "{231ACCE4-A69A-4F31-825B-69A85525B75A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
